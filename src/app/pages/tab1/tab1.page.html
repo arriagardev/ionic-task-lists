@@ -1,4 +1,5 @@
 <ion-header [translucent]="true" class="ion-no-border">
+  
   <ion-toolbar color="dark">
     <ion-title>
       Pendientes
@@ -7,10 +8,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" color="dark">
+
+  <app-listas></app-listas>
   
   <ion-list color="dark">
-    <ion-item *ngFor="let lista of listas" color="dark">
+    <ion-item *ngFor="let lista of listas" 
+              color="dark"
+              (click)="listaSeleccionada(lista)">
       <ion-label>{{ lista.titulo }}</ion-label>
+      <ion-note slot="end"
+                color="tertiary">
+                {{ lista.items.length }} items
+      </ion-note>
     </ion-item>    
   </ion-list>
 
